@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useState } from 'react';
-import useEmblaCarousel from 'embla-carousel-react';
+import useEmblaCarousel, { UseEmblaCarouselType } from 'embla-carousel-react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from './ui/button';
 import { cn } from '@/lib/utils';
@@ -36,11 +36,11 @@ export function Carousel({ children, className }: CarouselProps) {
         if (emblaApi) emblaApi.scrollTo(index);
     }, [emblaApi]);
 
-    const onInit = useCallback((emblaApi: any) => {
+    const onInit = useCallback((emblaApi: NonNullable<UseEmblaCarouselType[1]>) => {
         setScrollSnaps(emblaApi.scrollSnapList());
     }, []);
 
-    const onSelect = useCallback((emblaApi: any) => {
+    const onSelect = useCallback((emblaApi: NonNullable<UseEmblaCarouselType[1]>) => {
         setSelectedIndex(emblaApi.selectedScrollSnap());
         setPrevBtnDisabled(!emblaApi.canScrollPrev());
         setNextBtnDisabled(!emblaApi.canScrollNext());

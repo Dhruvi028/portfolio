@@ -68,7 +68,7 @@ export function Contact() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
                         <div className="space-y-8">
                             <p className="text-lg text-muted-foreground">
-                                I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+                                I&apos;m currently looking for new opportunities. Whether you have a question or just want to say hi, I&apos;ll try my best to get back to you!
                             </p>
 
                             <div className="space-y-6">
@@ -107,7 +107,7 @@ export function Contact() {
                         <Card className="bg-card/50 backdrop-blur-sm border-primary/20">
                             <CardHeader>
                                 <CardTitle>Send a Message</CardTitle>
-                                <CardDescription>I'll get back to you as soon as possible.</CardDescription>
+                                <CardDescription>I&apos;ll get back to you as soon as possible.</CardDescription>
                             </CardHeader>
                             <CardContent>
                                 <form ref={formRef} className="space-y-4" onSubmit={sendEmail}>
