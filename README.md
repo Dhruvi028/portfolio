@@ -61,9 +61,19 @@ Optimized for **Vercel**. The project includes a CI/CD pipeline using GitHub Act
 
 To enable automated deployments, you need to add the following secrets to your GitHub repository:
 
-1.  `VERCEL_TOKEN`: Your Vercel Personal Access Token.
-2.  `VERCEL_ORG_ID`: Your Vercel Organization ID.
-3.  `VERCEL_PROJECT_ID`: Your Vercel Project ID.
+1.  **`VERCEL_TOKEN`**:
+    - Go to your [Vercel Account Settings > Tokens](https://vercel.com/account/tokens).
+    - Create a new token and copy it.
+2.  **`VERCEL_ORG_ID`** & **`VERCEL_PROJECT_ID`**:
+    - Install Vercel CLI: `npm i -g vercel`.
+    - Run `vercel link` in the root of this project.
+    - After following the prompts, a `.vercel/project.json` file will be created.
+    - Copy `orgId` (for `VERCEL_ORG_ID`) and `projectId` (for `VERCEL_PROJECT_ID`) from that file.
+
+**GitHub Configuration**:
+1. Go to your GitHub repository.
+2. Click **Settings** > **Secrets and variables** > **Actions**.
+3. Click **New repository secret** for each of the three secrets above.
 
 ### Environment Variables
 
