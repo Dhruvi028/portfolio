@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import ResumeButton from "./dynamic-resume-button";
 
 export function Hero() {
     return (
@@ -58,11 +59,13 @@ export function Hero() {
                                 View Work <ArrowRight className="ml-2 w-5 h-5" />
                             </Link>
                         </Button>
-                        <Button size="lg" variant="outline" className="w-full sm:w-auto text-lg h-12 px-8 border-primary/50 text-foreground hover:bg-primary/10" asChild>
-                            <a href="/resume.pdf" download="Dhruvi_Shah_Resume.pdf">
-                                Download CV <Download className="ml-2 w-5 h-5" />
-                            </a>
-                        </Button>
+                        <ResumeButton 
+                            variant="outline" 
+                            size="lg" 
+                            className="w-full sm:w-auto text-lg h-12 px-8 border-primary/50 text-foreground hover:bg-primary/10"
+                        >
+                            Download CV <Download className="ml-2 w-5 h-5" />
+                        </ResumeButton>
                     </motion.div>
                 </div>
 
@@ -73,12 +76,21 @@ export function Hero() {
                     transition={{ duration: 0.7, delay: 0.2 }}
                     className="flex-1 relative w-full max-w-[500px] aspect-square flex items-center justify-center hidden md:flex"
                 >
-                    <div className="relative w-full h-full">
+                    <div className="relative w-[80%] h-[80%] flex items-center justify-center">
+                        {/* Glowing background */}
                         <div className="absolute inset-0 bg-gradient-to-tr from-primary to-secondary rounded-full opacity-20 blur-3xl animate-pulse" />
-                        <div className="absolute inset-4 border-2 border-primary/30 rounded-full animate-[spin_10s_linear_infinite]" />
-                        <div className="absolute inset-12 border-2 border-dashed border-secondary/30 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-9xl animate-bounce">
-                            ⚡
+                        
+                        {/* Rotating borders */}
+                        <div className="absolute -inset-4 border border-primary/30 rounded-full animate-[spin_8s_linear_infinite]" />
+                        <div className="absolute -inset-8 border border-dashed border-secondary/30 rounded-full animate-[spin_12s_linear_infinite_reverse]" />
+                        
+                        {/* Avatar Image */}
+                        <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-background/50 backdrop-blur-sm shadow-2xl">
+                             <img 
+                                src="/hero-avatar.png" 
+                                alt="Tech Girl Avatar" 
+                                className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                            />
                         </div>
                     </div>
                 </motion.div>

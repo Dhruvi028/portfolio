@@ -9,6 +9,12 @@ export const resume = {
         },
         about: "Skilled Full Stack Developer with 4 years of experience in React and Python, specializing in creating innovative web and desktop applications. Proficient in API/database integrations, payment gateway setups, and scalable code maintenance, with a proven track record of delivering high-quality projects on time. Experienced in team management, providing guidance to achieve project goals effectively.",
     },
+    highlightedSkills: [
+        "Python", "JavaScript", "TypeScript", "HTML5", "CSS3",
+        "React.js", "Next.js", "Vue.js", "Tailwind CSS",
+        "Node.js", "FastAPI", "Django", "Laravel",
+        "PostgreSQL", "MongoDB", "Docker", "AWS", "Git"
+    ],
     skills: {
         "Frontend & Programming": [
             "React.js", "Next.js", "Vue.js", "Nuxt.js", "JavaScript", "TypeScript", 

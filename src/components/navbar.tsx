@@ -6,6 +6,12 @@ import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import { Menu, X } from "lucide-react";
+import dynamic from "next/dynamic";
+
+const ResumeButton = dynamic(() => import("./resume-button"), {
+    ssr: false,
+    loading: () => <Button variant="outline">Loading...</Button>,
+});
 
 const navItems = [
     { name: "About", href: "#about" },
@@ -54,11 +60,9 @@ export function Navbar() {
                             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
                         </Link>
                     ))}
-                    <Button variant="outline" className="border-primary/50 text-primary hover:bg-primary/10 hover:border-primary" asChild>
-                        <a href="/resume.pdf" download="Dhruvi_Shah_Resume.pdf">
-                            Resume
-                        </a>
-                    </Button>
+                    <ResumeButton variant="outline" className="border-primary/50 text-primary hover:bg-primary/10 hover:border-primary">
+                        Resume
+                    </ResumeButton>
                 </div>
 
                 {/* Mobile Toggle */}
@@ -87,11 +91,9 @@ export function Navbar() {
                                     {item.name}
                                 </Link>
                             ))}
-                            <Button className="w-full bg-primary text-primary-foreground font-bold" asChild>
-                                <a href="/resume.pdf" download="Dhruvi_Shah_Resume.pdf">
-                                    Resume
-                                </a>
-                            </Button>
+                            <ResumeButton className="w-full bg-primary text-primary-foreground font-bold">
+                                Resume
+                            </ResumeButton>
                         </div>
                     </motion.div>
                 )}
