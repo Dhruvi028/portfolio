@@ -1,3 +1,5 @@
+"use client";
+
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
 import { About } from "@/components/about";
@@ -9,8 +11,28 @@ import { Education } from "@/components/education";
 import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
 import { ScrollProgress } from "@/components/scroll-progress";
+import { useResumeConfig } from "@/context/resume-config";
 
 export default function Home() {
+    const { sectionOrder, showSections } = useResumeConfig();
+
+    const renderSection = (key: string) => {
+        switch (key) {
+            case 'summary':
+                return showSections.summary && <About key="about" />;
+            case 'experience':
+                return showSections.experience && <Experience key="experience" />;
+            case 'skills':
+                return showSections.skills && <Skills key="skills" />;
+            case 'projects':
+                return showSections.projects && <Projects key="projects" />;
+            case 'education':
+                return showSections.education && <Education key="education" />;
+            default:
+                return null;
+        }
+    };
+
     return (
         <main className="min-h-screen bg-background text-foreground relative overflow-hidden">
             {/* Noise Texture */}
@@ -29,12 +51,9 @@ export default function Home() {
             <ScrollProgress />
             <Navbar />
             <Hero />
-            <About />
-            <Experience />
-            <Skills />
-            <Projects />
+            
+            {Array.from(new Set(sectionOrder)).map(key => renderSection(key))}
 
-            <Education />
             <Contact />
             <Footer />
         </main>

@@ -121,17 +121,20 @@ const styles = StyleSheet.create({
   },
 });
 
+import { ResumeData } from '@/context/resume-config';
+
 export const ResumeDocument = () => {
+  const resumeData = resume as unknown as ResumeData;
   // Use highlightedSkills if available, otherwise fallback to flattening all skills
-  const skillsToDisplay = (resume as any).highlightedSkills || Object.values(resume.skills).flat();
+  const skillsToDisplay = resumeData.highlightedSkills || Object.values(resumeData.skills).flat();
 
   return (
     <Document>
       <Page size="A4" style={styles.page}>
         {/* Header */}
         <View style={styles.header}>
-          <Text style={styles.name}>{resume.personalInfo.name}</Text>
-          <Text style={styles.role}>{resume.personalInfo.role}</Text>
+          <Text style={styles.name}>{resumeData.personalInfo.name}</Text>
+          <Text style={styles.role}>{resumeData.personalInfo.role}</Text>
           <View style={styles.contactRow}>
             <Text style={styles.contactItem}>{resume.personalInfo.contact.location}</Text>
             <Text style={styles.contactItem}>•</Text>
@@ -142,11 +145,11 @@ export const ResumeDocument = () => {
         </View>
 
         {/* About */}
-        {resume.personalInfo.about && (
+        {resumeData.personalInfo.about && (
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Summary</Text>
             <Text style={{ fontSize: 10, lineHeight: 1.5, color: '#333' }}>
-              {resume.personalInfo.about}
+              {resumeData.personalInfo.about}
             </Text>
           </View>
         )}
@@ -164,7 +167,7 @@ export const ResumeDocument = () => {
         {/* Experience */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Experience</Text>
-          {resume.experience.map((exp, index) => (
+          {resumeData.experience.filter(e => e.isVisible !== false).map((exp, index) => (
             <View key={index} style={styles.subSection} wrap={false}>
               <View style={styles.companyRow}>
                 <Text style={styles.companyName}>{exp.company}</Text>
@@ -184,7 +187,7 @@ export const ResumeDocument = () => {
         {/* Projects - optional, or concise */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Projects</Text>
-          {resume.projects.map((project, index) => ( // Limiting to top 4 to fit or just listing all?
+          {resumeData.projects.filter(p => p.isVisible !== false).map((project, index) => ( 
             <View key={index} style={[styles.subSection, { marginBottom: 12 }]} wrap={false}>
                <View style={styles.companyRow}>
                   <Text style={styles.projectTitle}>

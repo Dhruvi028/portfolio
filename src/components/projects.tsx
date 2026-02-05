@@ -1,6 +1,6 @@
 "use client";
 
-import { resume } from "@/data/resume";
+import { useResumeConfig } from "@/context/resume-config";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./ui/card";
@@ -13,9 +13,10 @@ import { Carousel } from "./carousel";
 interface Project {
     title: string;
     category: string;
-    tech: string[];
+    tech: string[] | string;
     description: string;
     link: string;
+    isVisible?: boolean;
 }
 
 // Group projects into slides of 3
@@ -41,11 +42,13 @@ const categoryColors: Record<string, string> = {
 };
 
 export function Projects() {
+    const { resumeData: resume } = useResumeConfig();
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-    // Use projects as is without reversing and group into slides of 3
-    const projectSlides = groupProjects(resume.projects, 3);
+    // Filter visible projects and group into slides of 3
+    const visibleProjects = resume.projects.filter((p: any) => p.isVisible !== false);
+    const projectSlides = groupProjects(visibleProjects, 3);
 
     return (
         <section id="projects" className="py-20 bg-muted/20">
@@ -81,10 +84,14 @@ export function Projects() {
                                                             )}
                                                         </div>
                                                         <div className="flex flex-wrap gap-2">
-                                                            {project.tech.slice(0, 3).map((t: string) => (
+                                                            {(Array.isArray(project.tech) ? project.tech : [project.tech]).slice(0, 3).map((t: string) => (
                                                                 <Badge key={t} variant="secondary" className="text-xs bg-secondary/20 text-secondary-foreground hover:bg-secondary/30">{t}</Badge>
                                                             ))}
-                                                            {project.tech.length > 3 && <Badge variant="outline" className="text-xs">+{project.tech.length - 3}</Badge>}
+                                                            {(Array.isArray(project.tech) ? project.tech : [project.tech]).length > 3 && (
+                                                                <Badge variant="outline" className="text-xs">
+                                                                    +{(Array.isArray(project.tech) ? project.tech : [project.tech]).length - 3}
+                                                                </Badge>
+                                                            )}
                                                         </div>
                                                     </CardHeader>
                                                     <CardContent className="flex-1">

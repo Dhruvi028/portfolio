@@ -1,12 +1,15 @@
 "use client";
 
-import { resume } from "@/data/resume";
+"use client";
+
+import { useResumeConfig } from "@/context/resume-config";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "./ui/card";
 import { GraduationCap } from "lucide-react";
 
 export function Education() {
+    const { resumeData: resume } = useResumeConfig();
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 

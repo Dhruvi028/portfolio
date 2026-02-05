@@ -1,12 +1,21 @@
 "use client";
 
-import { resume } from "@/data/resume";
+import { useResumeConfig } from "@/context/resume-config";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "./ui/card";
 import { Badge } from "./ui/badge";
 
+interface ExperienceItem {
+    company: string;
+    role: string;
+    duration: string;
+    description: string[];
+    isVisible?: boolean;
+}
+
 export function Experience() {
+    const { resumeData: resume } = useResumeConfig();
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -22,7 +31,7 @@ export function Experience() {
                     <h2 className="text-3xl md:text-5xl font-bold font-heading mb-16 text-center">Work <span className="text-secondary">Experience</span></h2>
 
                     <div className="relative border-l-2 border-primary/30 ml-4 md:ml-12 space-y-12">
-                        {resume.experience.map((exp, index) => (
+                        {(resume.experience as ExperienceItem[]).filter(exp => exp.isVisible !== false).map((exp, index) => (
                             <motion.div
                                 key={index}
                                 initial={{ opacity: 0, x: -20 }}

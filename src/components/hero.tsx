@@ -1,13 +1,14 @@
 "use client";
 
-import { resume } from "@/data/resume";
+import { useResumeConfig } from "@/context/resume-config";
 import { motion } from "framer-motion";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download, Settings } from "lucide-react";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import ResumeButton from "./dynamic-resume-button";
 
 export function Hero() {
+    const { resumeData: resume } = useResumeConfig();
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
             {/* Background Elements */}
@@ -48,24 +49,28 @@ export function Hero() {
                         Crafting premium web experiences with modern technologies.
                     </motion.p>
 
-                    <motion.div
+                    <motion.div 
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.3 }}
-                        className="flex flex-col sm:flex-row items-center gap-4 mt-8 justify-center md:justify-start"
+                        className="flex flex-wrap items-center justify-center md:justify-start gap-4"
                     >
-                        <Button size="lg" className="w-full sm:w-auto text-lg h-12 px-8 bg-primary hover:bg-primary/90 text-primary-foreground font-bold" asChild>
-                            <Link href="#projects">
-                                View Work <ArrowRight className="ml-2 w-5 h-5" />
-                            </Link>
+                        <Button size="lg" className="rounded-full shadow-lg hover:shadow-primary/25 transition-all w-full sm:w-auto" asChild>
+                            <a href="#projects">View My Work</a>
                         </Button>
-                        <ResumeButton 
-                            variant="outline" 
-                            size="lg" 
-                            className="w-full sm:w-auto text-lg h-12 px-8 border-primary/50 text-foreground hover:bg-primary/10"
-                        >
-                            Download CV <Download className="ml-2 w-5 h-5" />
-                        </ResumeButton>
+                        <div className="flex gap-2 w-full sm:w-auto">
+                            <ResumeButton fileName="Dhruvi_Patel_Resume.pdf">
+                                <span className="flex items-center gap-2">
+                                    <Download className="w-4 h-4" /> Download CV
+                                </span>
+                            </ResumeButton>
+                            <Button variant="outline" size="icon" className="h-10 w-10 relative group bg-background/50 backdrop-blur-sm border-primary/20" asChild>
+                                <Link href="/resume-builder">
+                                    <Settings className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors animate-[spin_10s_linear_infinite]" />
+                                    <span className="sr-only">Resume Builder</span>
+                                </Link>
+                            </Button>
+                        </div>
                     </motion.div>
                 </div>
 

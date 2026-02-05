@@ -1,11 +1,14 @@
 "use client";
 
-import { resume } from "@/data/resume";
+"use client";
+
+import { useResumeConfig } from "@/context/resume-config";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Card, CardContent } from "./ui/card";
 
 export function About() {
+    const { resumeData: resume } = useResumeConfig();
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 

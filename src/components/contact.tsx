@@ -1,6 +1,8 @@
 "use client";
 
-import { resume } from "@/data/resume";
+"use client";
+
+import { useResumeConfig } from "@/context/resume-config";
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "./ui/card";
@@ -11,6 +13,7 @@ import { Mail, MapPin, Phone, Send, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
 export function Contact() {
+    const { resumeData: resume } = useResumeConfig();
     const ref = useRef(null);
     const formRef = useRef<HTMLFormElement>(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
