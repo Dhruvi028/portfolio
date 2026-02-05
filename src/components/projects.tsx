@@ -10,9 +10,17 @@ import { ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { Carousel } from "./carousel";
 
+interface Project {
+    title: string;
+    category: string;
+    tech: string[];
+    description: string;
+    link: string;
+}
+
 // Group projects into slides of 3
-const groupProjects = (projects: any[], size: number) => {
-    const groups = [];
+const groupProjects = (projects: Project[], size: number) => {
+    const groups: Project[][] = [];
     for (let i = 0; i < projects.length; i += size) {
         groups.push(projects.slice(i, i + size));
     }
@@ -49,7 +57,7 @@ export function Projects() {
                         {projectSlides.map((slide, slideIndex) => (
                             <div key={slideIndex} className="flex-[0_0_100%] min-w-0 pl-4">
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 h-full">
-                                    {slide.map((project: any, projectIndex: number) => {
+                                    {slide.map((project, projectIndex: number) => {
                                         const actualIndex = slideIndex * 3 + projectIndex;
                                         return (
                                             <motion.div

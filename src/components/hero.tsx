@@ -32,7 +32,7 @@ export function Hero() {
                         transition={{ duration: 0.5, delay: 0.1 }}
                         className="text-5xl md:text-7xl font-bold font-heading tracking-tight"
                     >
-                        Hi, I'm <br />
+                        Hi, I&apos;m <br />
                         <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                             {resume.personalInfo.name}
                         </span>
