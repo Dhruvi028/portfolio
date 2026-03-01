@@ -9,35 +9,39 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 
 export const metadata: Metadata = {
-    title: "Professional Portfolio Builder",
-    description: "Build and share your stunning professional portfolio with ease.",
+  title: "Professional Portfolio Builder",
+  description:
+    "Build and share your stunning professional portfolio with ease.",
 };
 
 // Client Component wrapper logic moved to separate file to avoid conflict
 import { AdminWrapper } from "@/components/admin-wrapper";
 
 export default function RootLayout({
-    children,
+  children,
 }: Readonly<{
-    children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-    return (
-        <html lang="en" suppressHydrationWarning>
-            <body className={`${inter.variable} ${outfit.variable} font-sans antialiased bg-background text-foreground selection:bg-primary/20 selection:text-primary overflow-x-hidden`} suppressHydrationWarning>
-                <ResumeConfigProvider>
-                    <ThemeProvider
-                        attribute="class"
-                        defaultTheme="dark"
-                        enableSystem
-                        disableTransitionOnChange
-                    >
-                        <AdminWrapper>
-                            <CustomCursor />
-                            {children}
-                        </AdminWrapper>
-                    </ThemeProvider>
-                </ResumeConfigProvider>
-            </body>
-        </html>
-    );
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${inter.variable} ${outfit.variable} font-sans antialiased bg-background text-foreground selection:bg-primary/20 selection:text-primary overflow-x-hidden`}
+        suppressHydrationWarning
+      >
+        <ResumeConfigProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <AdminWrapper>
+              <CustomCursor />
+              {children}
+            </AdminWrapper>
+          </ThemeProvider>
+        </ResumeConfigProvider>
+      </body>
+    </html>
+  );
 }
