@@ -121,10 +121,11 @@ const styles = StyleSheet.create({
   },
 });
 
-import { ResumeData } from '@/context/resume-config';
+import { ResumeData, useResumeConfig } from '@/context/resume-config';
 
 export const ResumeDocument = () => {
   const resumeData = resume as unknown as ResumeData;
+  const { fontSize } = useResumeConfig();
   // Use highlightedSkills if available, otherwise fallback to flattening all skills
   const skillsToDisplay = resumeData.highlightedSkills || Object.values(resumeData.skills).flat();
 
@@ -136,11 +137,11 @@ export const ResumeDocument = () => {
           <Text style={styles.name}>{resumeData.personalInfo.name}</Text>
           <Text style={styles.role}>{resumeData.personalInfo.role}</Text>
           <View style={styles.contactRow}>
-            <Text style={styles.contactItem}>{resume.personalInfo.contact.location}</Text>
-            <Text style={styles.contactItem}>•</Text>
-            <Text style={styles.contactItem}>{resume.personalInfo.contact.phone}</Text>
-            <Text style={styles.contactItem}>•</Text>
-            <Text style={styles.contactItem}>{resume.personalInfo.contact.email}</Text>
+            <Text style={[styles.contactItem, { fontSize: fontSize }]}>{resume.personalInfo.contact.location}</Text>
+            <Text style={[styles.contactItem, { fontSize: fontSize }]}>•</Text>
+            <Text style={[styles.contactItem, { fontSize: fontSize }]}>{resume.personalInfo.contact.phone}</Text>
+            <Text style={[styles.contactItem, { fontSize: fontSize }]}>•</Text>
+            <Text style={[styles.contactItem, { fontSize: fontSize }]}>{resume.personalInfo.contact.email}</Text>
           </View>
         </View>
 
@@ -148,7 +149,7 @@ export const ResumeDocument = () => {
         {resumeData.personalInfo.about && (
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Summary</Text>
-            <Text style={{ fontSize: 10, lineHeight: 1.5, color: '#333' }}>
+            <Text style={{ fontSize: fontSize, lineHeight: 1.5, color: '#333' }}>
               {resumeData.personalInfo.about}
             </Text>
           </View>
@@ -159,7 +160,7 @@ export const ResumeDocument = () => {
           <Text style={styles.sectionTitle}>Skills</Text>
           <View style={styles.skillsRow}>
             {skillsToDisplay.map((skill: string, index: number) => (
-              <Text key={index} style={styles.skillTag}>{skill}</Text>
+              <Text key={index} style={[styles.skillTag, { fontSize: fontSize - 1 }]}>{skill}</Text>
             ))}
           </View>
         </View>
@@ -171,13 +172,13 @@ export const ResumeDocument = () => {
             <View key={index} style={styles.subSection} wrap={false}>
               <View style={styles.companyRow}>
                 <Text style={styles.companyName}>{exp.company}</Text>
-                <Text style={styles.date}>{exp.duration}</Text>
+                <Text style={[styles.date, { fontSize: fontSize }]}>{exp.duration}</Text>
               </View>
-              <Text style={styles.jobTitle}>{exp.role}</Text>
+              <Text style={[styles.jobTitle, { fontSize: fontSize + 1 }]}>{exp.role}</Text>
               {exp.description.map((desc, i) => (
                 <View key={i} style={styles.bulletPoint}>
-                  <Text style={styles.bullet}>•</Text>
-                  <Text style={styles.bulletText}>{desc}</Text>
+                  <Text style={[styles.bullet, { fontSize: fontSize }]}>•</Text>
+                  <Text style={[styles.bulletText, { fontSize: fontSize }]}>{desc}</Text>
                 </View>
               ))}
             </View>
@@ -199,10 +200,10 @@ export const ResumeDocument = () => {
                       </Link>
                   )}
                </View>
-               <Text style={{ fontSize: 9, fontStyle: 'italic', color: '#555', marginBottom: 2 }}>
+               <Text style={{ fontSize: fontSize - 1, fontStyle: 'italic', color: '#555', marginBottom: 2 }}>
                   {Array.isArray(project.tech) ? project.tech.join(', ') : project.tech}
                </Text>
-               <Text style={{ fontSize: 9, lineHeight: 1.3 }}>
+               <Text style={{ fontSize: fontSize - 1, lineHeight: 1.3 }}>
                   {project.description}
                </Text>
             </View>
@@ -218,7 +219,7 @@ export const ResumeDocument = () => {
                   <Text style={styles.companyName}>{edu.degree}</Text>
                   <Text style={styles.jobTitle}>{edu.institution}</Text>
               </View>
-              <Text style={styles.date}>{edu.duration}</Text>
+              <Text style={[styles.date, { fontSize: fontSize }]}>{edu.duration}</Text>
             </View>
           ))}
         </View>

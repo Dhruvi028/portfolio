@@ -4,7 +4,7 @@ import React from "react";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import { Button, ButtonProps } from "./ui/button";
 import { ModernTemplate } from "./resume-templates/ModernTemplate";
-import { ClassicTemplate } from "./resume-templates/ClassicTemplate";
+import { InternationalTemplate } from "./resume-templates/InternationalTemplate";
 import { useResumeConfig } from "@/context/resume-config";
 
 interface ResumeButtonProps extends ButtonProps {
@@ -12,16 +12,34 @@ interface ResumeButtonProps extends ButtonProps {
   fileName?: string;
 }
 
+export const ResumeButton = ({
+  children,
+  fileName = "Dhruvi_Shah_Resume.pdf",
+  ...props
+}: ResumeButtonProps) => {
+  const {
+    selectedTemplate,
+    themeColor,
+    showSections,
+    resumeData,
+    sectionOrder,
+    fontSize,
+  } = useResumeConfig();
 
+  const templateProps = {
+    themeColor,
+    showSections,
+    resumeData,
+    sectionOrder,
+    fontSize,
+  };
 
-export const ResumeButton = ({ children, fileName = "Dhruvi_Shah_Resume.pdf", ...props }: ResumeButtonProps) => {
-  const { selectedTemplate, themeColor, showSections, customRole, resumeData, sectionOrder } = useResumeConfig();
-
-  const templateProps = { themeColor, showSections, customRole, resumeData, sectionOrder };
-  
-  const ResumeDocument = selectedTemplate === 'classic' 
-    ? <ClassicTemplate {...templateProps} /> 
-    : <ModernTemplate {...templateProps} />;
+  const ResumeDocument =
+    selectedTemplate === "international" ? (
+      <InternationalTemplate {...templateProps} />
+    ) : (
+      <ModernTemplate {...templateProps} />
+    );
 
   return (
     <Button asChild {...props}>

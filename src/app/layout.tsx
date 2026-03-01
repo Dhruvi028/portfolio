@@ -9,8 +9,8 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 
 export const metadata: Metadata = {
-    title: "Dhruvi Patel - Portfolio",
-    description: "Full Stack Developer Portfolio",
+    title: "Professional Portfolio Builder",
+    description: "Build and share your stunning professional portfolio with ease.",
 };
 
 // Client Component wrapper logic moved to separate file to avoid conflict

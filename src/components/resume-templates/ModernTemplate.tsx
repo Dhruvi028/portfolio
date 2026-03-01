@@ -11,9 +11,9 @@ interface ResumeTemplateProps {
     skills: boolean;
     education: boolean;
   };
-  customRole: string;
   resumeData: ResumeData;
   sectionOrder?: string[];
+  fontSize?: number;
 }
 
 // We need to create styles dynamically or pass colors as props
@@ -142,9 +142,9 @@ const styles = StyleSheet.create({
 export const ModernTemplate = ({ 
     themeColor, 
     showSections, 
-    customRole, 
     resumeData,
-    sectionOrder = ['summary', 'experience', 'projects', 'skills', 'education']
+    sectionOrder = ['summary', 'experience', 'projects', 'skills', 'education'],
+    fontSize = 10
 }: ResumeTemplateProps) => {
   const resume = resumeData;
   const skillsToDisplay = resume.highlightedSkills || (resume.skills ? Object.values(resume.skills).flat() : []);
@@ -155,7 +155,7 @@ export const ModernTemplate = ({
         return showSections.summary && resume.personalInfo.about && (
           <View key="summary" style={styles.section}>
             <Text style={[styles.sectionTitle, { color: themeColor }]}>Summary</Text>
-            <Text style={{ fontSize: 10, lineHeight: 1.5, color: '#333' }}>
+            <Text style={{ fontSize: fontSize, lineHeight: 1.5, color: '#333' }}>
               {resume.personalInfo.about}
             </Text>
           </View>
@@ -166,7 +166,7 @@ export const ModernTemplate = ({
             <Text style={[styles.sectionTitle, { color: themeColor }]}>Skills</Text>
             <View style={styles.skillsRow}>
               {skillsToDisplay.map((skill: string, index: number) => (
-                <Text key={index} style={[styles.skillTag, { color: themeColor }]}>{skill}</Text>
+                <Text key={index} style={[styles.skillTag, { color: themeColor, fontSize: fontSize - 1 }]}>{skill}</Text>
               ))}
             </View>
           </View>
@@ -179,13 +179,13 @@ export const ModernTemplate = ({
               <View key={index} style={styles.subSection} wrap={false}>
                 <View style={styles.companyRow}>
                   <Text style={styles.companyName}>{exp.company}</Text>
-                  <Text style={styles.date}>{exp.duration}</Text>
+                  <Text style={[styles.date, { fontSize: fontSize }]}>{exp.duration}</Text>
                 </View>
-                <Text style={styles.jobTitle}>{exp.role}</Text>
+                <Text style={[styles.jobTitle, { fontSize: fontSize + 1 }]}>{exp.role}</Text>
                 {exp.description.map((desc: string, i: number) => (
                   <View key={i} style={styles.bulletPoint}>
-                    <Text style={styles.bullet}>•</Text>
-                    <Text style={styles.bulletText}>{desc}</Text>
+                    <Text style={[styles.bullet, { fontSize: fontSize }]}>•</Text>
+                    <Text style={[styles.bulletText, { fontSize: fontSize }]}>{desc}</Text>
                   </View>
                 ))}
               </View>
@@ -208,10 +208,10 @@ export const ModernTemplate = ({
                         </Link>
                     )}
                  </View>
-                 <Text style={{ fontSize: 9, fontStyle: 'italic', color: '#555', marginBottom: 2 }}>
+                 <Text style={{ fontSize: fontSize - 1, fontStyle: 'italic', color: '#555', marginBottom: 2 }}>
                     {Array.isArray(project.tech) ? project.tech.join(', ') : project.tech}
                   </Text>
-                  <Text style={{ fontSize: 9, lineHeight: 1.3 }}>
+                  <Text style={{ fontSize: fontSize - 1, lineHeight: 1.3 }}>
                     {project.description}
                   </Text>
               </View>
@@ -228,7 +228,7 @@ export const ModernTemplate = ({
                     <Text style={styles.companyName}>{edu.degree}</Text>
                     <Text style={styles.jobTitle}>{edu.institution}</Text>
                 </View>
-                <Text style={styles.date}>{edu.duration}</Text>
+                <Text style={[styles.date, { fontSize: fontSize }]}>{edu.duration}</Text>
               </View>
             ))}
           </View>
@@ -247,14 +247,14 @@ export const ModernTemplate = ({
               {resume.personalInfo.name}
           </Text>
           <Text style={styles.role}>
-              {customRole || resume.personalInfo.role}
+              {resume.personalInfo.role}
           </Text>
           <View style={styles.contactRow}>
-            <Text style={styles.contactItem}>{resume.personalInfo.contact.location}</Text>
-            <Text style={styles.contactItem}>•</Text>
-            <Text style={styles.contactItem}>{resume.personalInfo.contact.phone}</Text>
-            <Text style={styles.contactItem}>•</Text>
-            <Text style={styles.contactItem}>{resume.personalInfo.contact.email}</Text>
+            <Text style={[styles.contactItem, { fontSize: fontSize }]}>{resume.personalInfo.contact.location}</Text>
+            <Text style={[styles.contactItem, { fontSize: fontSize }]}>•</Text>
+            <Text style={[styles.contactItem, { fontSize: fontSize }]}>{resume.personalInfo.contact.phone}</Text>
+            <Text style={[styles.contactItem, { fontSize: fontSize }]}>•</Text>
+            <Text style={[styles.contactItem, { fontSize: fontSize }]}>{resume.personalInfo.contact.email}</Text>
           </View>
         </View>
 

@@ -13,6 +13,8 @@ const ResumeButton = dynamic(() => import("./resume-button"), {
     loading: () => <Button variant="outline">Loading...</Button>,
 });
 
+import { useResumeConfig } from "@/context/resume-config";
+
 const navItems = [
     { name: "About", href: "#about" },
     { name: "Experience", href: "#experience" },
@@ -22,8 +24,11 @@ const navItems = [
 ];
 
 export function Navbar() {
+    const { resumeData } = useResumeConfig();
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+
+    const displayName = resumeData.personalInfo.name.split(' ')[0] || "Portfolio";
 
     useEffect(() => {
         const handleScroll = () => {
@@ -45,7 +50,7 @@ export function Navbar() {
         >
             <div className="container mx-auto px-6 py-4 flex items-center justify-between">
                 <Link href="#" className="text-2xl font-bold font-heading bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                    Dhruvi<span className="text-foreground">.dev</span>
+                    {displayName}<span className="text-foreground">.dev</span>
                 </Link>
 
                 {/* Desktop Nav */}
