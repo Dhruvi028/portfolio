@@ -12,11 +12,24 @@ export const resume = {
   },
   highlightedSkills: [
     "React.js",
+    "Next.js",
+    "Vue.js",
+    "TypeScript",
+    "Tailwind CSS",
     "Python",
     "Node.js",
     "TypeScript",
+    "Laravel",
+    "NestJS",
+    "FastAPI",
+    "REST APIs",
+    "WebSockets",
+    "PostgreSQL",
+    "MongoDB",
     "AWS",
     "Docker",
+    "Git",
+    "Stripe Integration",
   ],
   skills: {
     Frontend: [
@@ -119,6 +132,42 @@ export const resume = {
   ],
   projects: [
     {
+      title: "Nissan i-CAN",
+      category: "Automotive",
+      tech: ["Vue 3", "PrimeVue", "Laravel", "Tailwind CSS", "Pinia", "AWS S3"],
+      description:
+        "Engineered Nissan's i-CAN digital asset management and dealership platform, building interactive workflows, role-based permission controls, and high-performance RESTful services.",
+      link: "https://dam.nissan-ican.com/",
+      isVisible: true,
+    },
+    {
+      title: "Nissan Approval System",
+      category: "Automotive",
+      tech: ["Vue 3", "Laravel", "SSO"],
+      description:
+        "Architected a secure digital asset management platform featuring Single Sign-On (SSO), role-based access control, versioning, and drag-and-drop file uploads for enterprise teams.",
+      link: "https://aps.nissan-ican.com",
+      isVisible: true,
+    },
+    {
+      title: "Jugendhilfe",
+      category: " Social Care",
+      tech: ["Inertia.js", "Vue 3", "Laravel", "Tailwind CSS", "WebSockets"],
+      description:
+        "Developed a child and youth welfare (Jugendhilfe) management portal with Inertia.js and Vue 3 for care documentation, client case tracking, real-time updates, and digital signatures.",
+      link: "https://develop.wannemueller.com/",
+      isVisible: true,
+    },
+    {
+      title: "Dachboxit",
+      category: "Automotive & E-Commerce",
+      tech: ["Laravel 10", "PHP", "Tailwind CSS", "Stripe", "Vite", "MySQL"],
+      description:
+        "Developed a roof box and cargo carrier rental platform built with Laravel and Stripe integration, enabling seamless booking calendar reservations, invoice generation, and automated email workflows.",
+      link: "http://dachboxit.de/",
+      isVisible: true,
+    },
+    {
       title: "AquaNova",
       category: "Marine Tech",
       tech: ["NestJS", "Next.js", "React", "Docker", "Jest", "JWT"],
@@ -128,12 +177,51 @@ export const resume = {
       isVisible: true,
     },
     {
-      title: "Nissan Approval System",
+      title: "Nissan Book a Service",
       category: "Automotive",
-      tech: ["Vue 3", "Laravel", "SSO"],
+      tech: [
+        "Vue 3",
+        "Pinia",
+        "Bootstrap 5",
+        "Google Maps API",
+        "Vue i18n",
+        "Axios",
+      ],
       description:
-        "Architected a secure digital asset management platform featuring Single Sign-On (SSO), role-based access control, versioning, and drag-and-drop file uploads for enterprise teams.",
-      link: "https://appsys.nissan-middleeast.com",
+        "Architected multi-region online vehicle service booking applications for Nissan dealerships across Middle East markets (Abu Dhabi, Qatar, Bahrain, Kuwait, Oman, Iraq) with localized multi-language support and interactive maps.",
+      link: "#",
+      isVisible: true,
+    },
+    {
+      title: "Lead-Flow CRM & Form Builder",
+      category: "CRM & Automation",
+      tech: [
+        "Vue 3",
+        "PrimeVue",
+        "Laravel",
+        "TanStack Query",
+        "Tailwind CSS",
+        "Pinia",
+      ],
+      description:
+        "Built an enterprise lead-flow CRM and dynamic form builder supporting customizable field controls, validation pipelines, and automated lead routing dashboards.",
+      link: "#",
+      isVisible: true,
+    },
+    {
+      title: "AquaShift",
+      category: "Marine Tech",
+      tech: [
+        "Next.js 15",
+        "NestJS",
+        "PostgreSQL",
+        "TypeORM",
+        "Redux Toolkit",
+        "Docker",
+      ],
+      description:
+        "Architected a real-time marine shift management solution with Next.js 15 and NestJS, featuring TypeORM PostgreSQL database architecture, Swagger API docs, and Docker containerization.",
+      link: "#",
       isVisible: true,
     },
     {
@@ -142,16 +230,7 @@ export const resume = {
       tech: ["Next.js", "TypeScript", "Python", "PocketBase"],
       description:
         "Designed a real-time IoT monitoring dashboard using Next.js and Python. Engineered live data visualization, network performance analytics, and interactive map integrations.",
-      link: "https://andee-application-server.fly.dev",
-      isVisible: true,
-    },
-    {
-      title: "Stocks Newsletter Platform",
-      category: "Finance",
-      tech: ["WebSockets", "Next.js", "Node.js", "Auth0", "MongoDB"],
-      description:
-        "Built a high-performance financial tracking platform utilizing WebSockets for live market data feeds. Implemented Auth0 for strict security and interactive charting for market analytics.",
-      link: "https://stocks-newsletter-platform-frontend-shnt.onrender.com",
+      link: "#",
       isVisible: true,
     },
     {
@@ -162,6 +241,15 @@ export const resume = {
         "Deployed a production-grade Web application mapping for film producers. Engineered highly scalable REST APIs, integrated Stripe payment gateways, and configured Twilio for real-time notifications.",
       link: "https://infiction.vercel.app/",
       isVisible: true,
+    },
+    {
+      title: "Stocks Newsletter Platform",
+      category: "Finance",
+      tech: ["WebSockets", "Next.js", "Node.js", "Auth0", "MongoDB"],
+      description:
+        "Built a high-performance financial tracking platform utilizing WebSockets for live market data feeds. Implemented Auth0 for strict security and interactive charting for market analytics.",
+      link: "#",
+      isVisible: false,
     },
   ],
   education: [

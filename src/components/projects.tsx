@@ -31,10 +31,13 @@ const groupProjects = (projects: Project[], size: number) => {
 // Category color mapping
 const categoryColors: Record<string, string> = {
     "Automation & Analytics": "bg-purple-500/20 text-purple-300 border-purple-500/30",
+    "CRM & Automation": "bg-emerald-500/20 text-emerald-300 border-emerald-500/30",
     "Marine Tech": "bg-blue-500/20 text-blue-300 border-blue-500/30",
     "Automotive": "bg-red-500/20 text-red-300 border-red-500/30",
+    "Automotive & E-Commerce": "bg-amber-500/20 text-amber-300 border-amber-500/30",
     "IoT & Monitoring": "bg-green-500/20 text-green-300 border-green-500/30",
     "Lifestyle & Wellness": "bg-pink-500/20 text-pink-300 border-pink-500/30",
+    "Healthcare & Social Care": "bg-teal-500/20 text-teal-300 border-teal-500/30",
     "Healthcare & Veterinary": "bg-teal-500/20 text-teal-300 border-teal-500/30",
     "Finance & Trading": "bg-yellow-500/20 text-yellow-300 border-yellow-500/30",
     "Manufacturing & CAD": "bg-orange-500/20 text-orange-300 border-orange-500/30",

@@ -8,7 +8,7 @@ import Link from "next/link";
 import ResumeButton from "./dynamic-resume-button";
 
 export function Hero() {
-  const { resumeData: resume, avatarType } = useResumeConfig();
+  const { resumeData: resume, avatarType, isAdmin } = useResumeConfig();
 
   const avatarMap: Record<string, string> = {
     tech1: "/avatars/avatar1.png",
@@ -67,19 +67,21 @@ export function Hero() {
             >
               <a href="#projects">View My Work</a>
             </Button>
-            <div className="flex gap-2 w-full sm:w-auto">
-              <Button
-                variant="outline"
-                size="icon"
-                className="h-10 w-10 relative group bg-background/50 backdrop-blur-sm border-primary/20"
-                asChild
-              >
-                <Link href="/resume-builder">
-                  <Settings className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                  <span className="sr-only">Resume Builder</span>
-                </Link>
-              </Button>
-            </div>
+            {isAdmin && (
+              <div className="flex gap-2 w-full sm:w-auto">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="h-10 w-10 relative group bg-background/50 backdrop-blur-sm border-primary/20 rounded-full sm:rounded-lg"
+                  asChild
+                >
+                  <Link href="/resume-builder">
+                    <Settings className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                    <span className="sr-only">Resume Builder</span>
+                  </Link>
+                </Button>
+              </div>
+            )}
           </motion.div>
         </div>
 
