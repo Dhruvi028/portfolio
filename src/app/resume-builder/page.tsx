@@ -21,6 +21,8 @@ import {
   Circle,
   GripVertical,
   ExternalLink,
+  ChevronUp,
+  ChevronDown,
 } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import { Reorder } from "framer-motion";
@@ -97,6 +99,8 @@ export default function ResumeBuilderPage() {
     if (portfolioTemplate) setLocalPortfolioTemplate(portfolioTemplate);
     if (avatarType) setLocalAvatarType(avatarType);
     if (fontSize) setLocalFontSize(fontSize);
+    if (sectionOrder && sectionOrder.length > 0)
+      setLocalSectionOrder(Array.from(new Set(sectionOrder)));
   }, [
     resumeData,
     selectedTemplate,
@@ -105,7 +109,26 @@ export default function ResumeBuilderPage() {
     fontSize,
     portfolioTemplate,
     avatarType,
+    sectionOrder,
   ]);
+
+  const moveSectionUp = (index: number) => {
+    if (index <= 0) return;
+    const newOrder = [...localSectionOrder];
+    const temp = newOrder[index - 1];
+    newOrder[index - 1] = newOrder[index];
+    newOrder[index] = temp;
+    setLocalSectionOrder(Array.from(new Set(newOrder)));
+  };
+
+  const moveSectionDown = (index: number) => {
+    if (index >= localSectionOrder.length - 1) return;
+    const newOrder = [...localSectionOrder];
+    const temp = newOrder[index + 1];
+    newOrder[index + 1] = newOrder[index];
+    newOrder[index] = temp;
+    setLocalSectionOrder(Array.from(new Set(newOrder)));
+  };
 
   // Update browser tab title based on active profile
   useEffect(() => {
@@ -1174,15 +1197,37 @@ export default function ResumeBuilderPage() {
                     }
                     className="space-y-2"
                   >
-                    {localSectionOrder.map((key) => (
+                    {localSectionOrder.map((key, idx) => (
                       <Reorder.Item
                         key={key}
                         value={key}
                         className="flex items-center justify-between p-3 border rounded-lg bg-card hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors cursor-default"
                       >
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-2">
                           <GripVertical className="w-4 h-4 text-muted-foreground cursor-grab active:cursor-grabbing" />
-                          <Label className="capitalize cursor-pointer">
+                          <div className="flex flex-col">
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="h-5 w-5 p-0 text-muted-foreground hover:text-foreground disabled:opacity-30"
+                              onClick={() => moveSectionUp(idx)}
+                              disabled={idx === 0}
+                              title="Move Up"
+                            >
+                              <ChevronUp className="w-3.5 h-3.5" />
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="h-5 w-5 p-0 text-muted-foreground hover:text-foreground disabled:opacity-30"
+                              onClick={() => moveSectionDown(idx)}
+                              disabled={idx === localSectionOrder.length - 1}
+                              title="Move Down"
+                            >
+                              <ChevronDown className="w-3.5 h-3.5" />
+                            </Button>
+                          </div>
+                          <Label className="capitalize cursor-pointer font-medium text-sm ml-1">
                             {key}
                           </Label>
                         </div>

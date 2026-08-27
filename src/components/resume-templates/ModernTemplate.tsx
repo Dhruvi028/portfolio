@@ -24,54 +24,51 @@ const styles = StyleSheet.create({
   page: {
     flexDirection: 'column',
     backgroundColor: '#FFFFFF',
-    padding: 40,
+    padding: 28,
     fontFamily: 'Helvetica',
   },
   header: {
-    marginBottom: 20,
+    marginBottom: 12,
     borderBottomWidth: 2,
-    // borderBottomColor: dynamic
-    paddingBottom: 10,
+    paddingBottom: 8,
   },
   name: {
-    fontSize: 26,
+    fontSize: 24,
     fontWeight: 'bold',
-    // color: dynamic
-    marginBottom: 6,
+    marginBottom: 4,
     textTransform: 'uppercase',
   },
   role: {
-    fontSize: 14,
+    fontSize: 13,
     color: '#34495e',
-    marginBottom: 6,
+    marginBottom: 4,
     fontWeight: 'medium',
   },
   contactRow: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
     flexWrap: 'wrap',
-    gap: 15,
-    marginTop: 5,
+    gap: 12,
+    marginTop: 4,
   },
   contactItem: {
-    fontSize: 10,
+    fontSize: 9.5,
     color: '#555',
   },
   section: {
-    marginBottom: 15,
+    marginBottom: 10,
   },
   sectionTitle: {
-    fontSize: 14,
+    fontSize: 13,
     fontWeight: 'bold',
-    // color: dynamic
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
-    paddingBottom: 5,
-    marginBottom: 10,
+    paddingBottom: 3,
+    marginBottom: 6,
     textTransform: 'uppercase',
   },
   subSection: {
-    marginBottom: 10,
+    marginBottom: 6,
   },
   companyRow: {
     flexDirection: 'row',
@@ -176,14 +173,14 @@ export const ModernTemplate = ({
           <View key="experience" style={styles.section}>
             <Text style={[styles.sectionTitle, { color: themeColor }]}>Experience</Text>
             {resume.experience.filter(e => e.isVisible !== false).map((exp, index) => (
-              <View key={index} style={styles.subSection} wrap={false}>
+              <View key={index} style={styles.subSection}>
                 <View style={styles.companyRow}>
                   <Text style={styles.companyName}>{exp.company}</Text>
                   <Text style={[styles.date, { fontSize: fontSize }]}>{exp.duration}</Text>
                 </View>
                 <Text style={[styles.jobTitle, { fontSize: fontSize + 1 }]}>{exp.role}</Text>
                 {exp.description.map((desc: string, i: number) => (
-                  <View key={i} style={styles.bulletPoint}>
+                  <View key={i} style={styles.bulletPoint} wrap={false}>
                     <Text style={[styles.bullet, { fontSize: fontSize }]}>•</Text>
                     <Text style={[styles.bulletText, { fontSize: fontSize }]}>{desc}</Text>
                   </View>
@@ -197,7 +194,7 @@ export const ModernTemplate = ({
           <View key="projects" style={styles.section}>
             <Text style={[styles.sectionTitle, { color: themeColor }]}>Projects</Text>
             {resume.projects.filter(p => p.isVisible !== false).map((project, index) => ( 
-              <View key={index} style={[styles.subSection, { marginBottom: 12 }]} wrap={false}>
+              <View key={index} style={[styles.subSection, { marginBottom: 8 }]} wrap={false}>
                  <View style={styles.companyRow}>
                     <Text style={styles.projectTitle}>
                         {project.title}
