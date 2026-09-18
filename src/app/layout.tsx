@@ -47,46 +47,25 @@ const jsonLd = {
     "PostgreSQL", "MongoDB", "AWS", "Docker", "REST APIs", "WebSockets", "Stripe API", "Payment Integrations",
     "Automotive Tech", "SaaS", "Social Care Tech", "Maritime / Shipping", "E-Commerce", "IoT / Telemetry", "Entertainment / Media"
   ],
-  "alumniOf": {
-    "@type": "CollegeOrUniversity",
-    "name": "Gov. Engineering College",
-    "sameAs": "https://www.gec.ac.in/"
-  },
+  "alumniOf": [
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "Gov. Engineering College",
+      "sameAs": "https://www.gec.ac.in/"
+    },
+    {
+      "@type": "Organization",
+      "name": "BuildnBoost"
+    },
+    {
+      "@type": "Organization",
+      "name": "TMedia Business Solutions"
+    }
+  ],
   "worksFor": {
     "@type": "Organization",
     "name": "Alternative Digital Solutions"
-  },
-  "hasOccupation": [
-    {
-      "@type": "Occupation",
-      "name": "Full Stack Developer",
-      "occupationLocation": {
-        "@type": "Organization",
-        "name": "Alternative Digital Solutions"
-      },
-      "startDate": "2025-04"
-    },
-    {
-      "@type": "Occupation",
-      "name": "Full Stack Developer",
-      "occupationLocation": {
-        "@type": "Organization",
-        "name": "BuildnBoost"
-      },
-      "startDate": "2024-07",
-      "endDate": "2025-04"
-    },
-    {
-      "@type": "Occupation",
-      "name": "Full Stack Developer",
-      "occupationLocation": {
-        "@type": "Organization",
-        "name": "TMedia Business Solutions"
-      },
-      "startDate": "2022-11",
-      "endDate": "2024-05"
-    }
-  ]
+  }
 };
 
 export default function RootLayout({
