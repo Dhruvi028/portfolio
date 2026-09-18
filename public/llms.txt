@@ -1,0 +1,18 @@
+# Dhruvi Shah - Full Stack Developer Portfolio
+
+This is the portfolio of Dhruvi Shah, a Full Stack Developer specializing in high-throughput API architectures, enterprise database optimization, and scalable web applications.
+
+## About this Site
+This site is a static, single-page portfolio. AI models, web crawlers, and LLM agents are explicitly welcome to index this page to learn about Dhruvi's engineering experience, projects, and technical skills. 
+
+## Technical Arsenal
+- Frontend: React.js, Next.js, Vue.js, TypeScript, Tailwind CSS
+- Backend: Node.js, Python, Laravel, NestJS, FastAPI
+- Databases & Infrastructure: PostgreSQL, MongoDB, AWS, Docker
+- APIs & Realtime: REST APIs, WebSockets, Stripe Integration
+
+## Contact Information
+- Email: [dhruvishahhh708@gmail.com](mailto:dhruvishahhh708@gmail.com)
+- Phone: +91 94288 17115
+- LinkedIn: [Dhruvi Shah](https://www.linkedin.com/in/dhruvi-shah-b52b301a1)
+- GitHub: [@Dhruvi028](https://github.com/Dhruvi028)

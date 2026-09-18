@@ -1,21 +1,46 @@
 import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
+import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import { ResumeConfigProvider } from "@/context/resume-config";
-import { CustomCursor } from "@/components/custom-cursor";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-heading" });
+const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
-  title: "Professional Portfolio Builder",
-  description:
-    "Build and share your stunning professional portfolio with ease.",
+  title: "Dhruvi Shah | Full Stack Developer",
+  description: "Portfolio of Dhruvi Shah, Full Stack Developer building scalable web apps.",
+  keywords: ["Dhruvi Shah", "Full Stack Developer", "React", "Next.js", "Vue.js", "Node.js", "Laravel", "NestJS", "Software Engineer"],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
-// Client Component wrapper logic moved to separate file to avoid conflict
-import { AdminWrapper } from "@/components/admin-wrapper";
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Dhruvi Shah",
+  "jobTitle": "Full Stack Developer",
+  "url": "https://dhruvi-shah.vercel.app/",
+  "sameAs": [
+    "https://www.linkedin.com/in/dhruvi-shah-b52b301a1",
+    "https://github.com/Dhruvi028"
+  ],
+  "knowsAbout": [
+    "React.js", "Next.js", "Vue.js", "TypeScript", "Tailwind CSS",
+    "Node.js", "Python", "Laravel", "NestJS", "FastAPI",
+    "PostgreSQL", "MongoDB", "AWS", "Docker", "REST APIs", "WebSockets", "Stripe API", "Payment Integrations",
+    "Automotive Tech", "SaaS", "Social Care Tech", "Marintime / Shipping", "E-Commerce", "IoT / Telemetry", "Entertainment / Media"
+  ]
+};
 
 export default function RootLayout({
   children,
@@ -24,23 +49,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
-        className={`${inter.variable} ${outfit.variable} font-sans antialiased bg-background text-foreground selection:bg-primary/20 selection:text-primary overflow-x-hidden`}
+        className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased overflow-x-hidden`}
         suppressHydrationWarning
       >
-        <ResumeConfigProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <AdminWrapper>
-              <CustomCursor />
-              {children}
-            </AdminWrapper>
-          </ThemeProvider>
-        </ResumeConfigProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

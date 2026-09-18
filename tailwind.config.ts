@@ -18,7 +18,8 @@ const config: Config = {
 		extend: {
 			fontFamily: {
 				sans: ["var(--font-inter)", "sans-serif"],
-				heading: ["var(--font-outfit)", "sans-serif"],
+				heading: ["var(--font-heading)", "sans-serif"],
+				mono: ["var(--font-mono)", "monospace"],
 			},
 			colors: {
 				border: "hsl(var(--border))",
