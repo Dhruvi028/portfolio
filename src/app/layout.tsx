@@ -62,10 +62,32 @@ const jsonLd = {
       "name": "TMedia Business Solutions"
     }
   ],
-  "worksFor": {
+  "worksFor": [
+  {
     "@type": "Organization",
     "name": "Alternative Digital Solutions"
+  },
+  {
+    "@type": "OrganizationRole",
+    "roleName": "Full Stack Developer",
+    "startDate": "2024-07",
+    "endDate": "2025-04",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "BuildnBoost"
+    }
+  },
+  {
+    "@type": "OrganizationRole",
+    "roleName": "Full Stack Developer",
+    "startDate": "2022-11",
+    "endDate": "2024-05",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "TMedia Business Solutions"
+    }
   }
+]
 };
 
 export default function RootLayout({
