@@ -218,10 +218,12 @@ export default function Portfolio() {
           </div>
           <div className="flex items-center gap-4">
             <a href="https://github.com/Dhruvi028" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-              <Github className="w-4 h-4" />
+              <span className="sr-only">GitHub Profile</span>
+              <Github className="w-4 h-4" aria-hidden="true" />
             </a>
             <a href="https://www.linkedin.com/in/dhruvi-shah-b52b301a1" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-              <Linkedin className="w-4 h-4" />
+              <span className="sr-only">LinkedIn Profile</span>
+              <Linkedin className="w-4 h-4" aria-hidden="true" />
             </a>
             <span className="hidden md:inline-block border-l border-border h-3 mx-2"></span>
             <span>© {new Date().getFullYear()} DHRUVI SHAH</span>
