@@ -42,6 +42,9 @@ export default function Portfolio() {
             <a href="tel:+919428817115" className="flex items-center justify-between hover:bg-primary hover:text-primary-foreground p-3 border border-border hover:border-primary transition-colors bg-background">
               <span>PHONE</span> <ArrowRight className="w-4 h-4" />
             </a>
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between bg-primary text-primary-foreground p-3 border border-primary hover:bg-primary/90 transition-colors">
+              <span className="font-bold">RESUME.PDF</span> <ArrowRight className="w-4 h-4" />
+            </a>
             <div className="p-3 border border-border text-muted-foreground bg-background">
               LOC: AHMEDABAD, IN
             </div>

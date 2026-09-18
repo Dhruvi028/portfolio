@@ -38,7 +38,26 @@ const jsonLd = {
     "React.js", "Next.js", "Vue.js", "TypeScript", "Tailwind CSS",
     "Node.js", "Python", "Laravel", "NestJS", "FastAPI",
     "PostgreSQL", "MongoDB", "AWS", "Docker", "REST APIs", "WebSockets", "Stripe API", "Payment Integrations",
-    "Automotive Tech", "SaaS", "Social Care Tech", "Marintime / Shipping", "E-Commerce", "IoT / Telemetry", "Entertainment / Media"
+    "Automotive Tech", "SaaS", "Social Care Tech", "Maritime / Shipping", "E-Commerce", "IoT / Telemetry", "Entertainment / Media"
+  ],
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Gov. Engineering College",
+    "sameAs": "https://www.gec.ac.in/"
+  },
+  "worksFor": [
+    {
+      "@type": "Organization",
+      "name": "Alternative Digital Solutions"
+    },
+    {
+      "@type": "Organization",
+      "name": "BuildnBoost"
+    },
+    {
+      "@type": "Organization",
+      "name": "TMedia Business Solutions"
+    }
   ]
 };
 
