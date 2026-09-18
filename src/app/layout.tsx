@@ -30,6 +30,13 @@ const jsonLd = {
   "name": "Dhruvi Shah",
   "jobTitle": "Full Stack Developer",
   "url": "https://dhruvi-shah.vercel.app/",
+  "email": "mailto:dhruvishahhh708@gmail.com",
+  "telephone": "+91-9428817115",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Ahmedabad",
+    "addressCountry": "IN"
+  },
   "sameAs": [
     "https://www.linkedin.com/in/dhruvi-shah-b52b301a1",
     "https://github.com/Dhruvi028"
@@ -45,18 +52,39 @@ const jsonLd = {
     "name": "Gov. Engineering College",
     "sameAs": "https://www.gec.ac.in/"
   },
-  "worksFor": [
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Alternative Digital Solutions"
+  },
+  "hasOccupation": [
     {
-      "@type": "Organization",
-      "name": "Alternative Digital Solutions"
+      "@type": "Occupation",
+      "name": "Full Stack Developer",
+      "occupationLocation": {
+        "@type": "Organization",
+        "name": "Alternative Digital Solutions"
+      },
+      "startDate": "2025-04"
     },
     {
-      "@type": "Organization",
-      "name": "BuildnBoost"
+      "@type": "Occupation",
+      "name": "Full Stack Developer",
+      "occupationLocation": {
+        "@type": "Organization",
+        "name": "BuildnBoost"
+      },
+      "startDate": "2024-07",
+      "endDate": "2025-04"
     },
     {
-      "@type": "Organization",
-      "name": "TMedia Business Solutions"
+      "@type": "Occupation",
+      "name": "Full Stack Developer",
+      "occupationLocation": {
+        "@type": "Organization",
+        "name": "TMedia Business Solutions"
+      },
+      "startDate": "2022-11",
+      "endDate": "2024-05"
     }
   ]
 };
@@ -71,7 +99,7 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
         />
       </head>
       <body
